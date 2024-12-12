@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Harga Rumah</title>
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediksi Harga Rumah JakSel</h1>
+        <form id="predictionForm" action="{{ url_for('predict') }}" method="post">
+            <label for="lb">Luas Bangunan (m²):</label>
+            <input type="text" id="lb" name="lb" required>
+
+            <label for="lt">Luas Tanah (m²):</label>
+            <input type="text" id="lt" name="lt" required>
+
+            <label for="kt">Jumlah Kamar Tidur:</label>
+            <input type="number" id="kt" name="kt" required>
+
+            <label for="km">Jumlah Kamar Mandi:</label>
+            <input type="number" id="km" name="km" required>
+
+            <label for="grs">Jumlah Garasi:</label>
+            <input type="number" id="grs" name="grs" required>
+
+            <input type="submit" value="Prediksi">
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var action = form.getAttribute('action');
+            form.action = './' + action;
+            form.submit();
+        });
+    </script>
+</body>
+</html>
