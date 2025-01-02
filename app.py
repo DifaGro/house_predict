@@ -28,7 +28,7 @@ def predict():
     prediction = model.predict(input_data)[0]
     prediction_milyar = prediction / 1000  # Konversi ke milyar
 
-    return render_template('index.html', prediction_text=f'Prediksi harga rumah adalah: {prediction_milyar:.2f} milyar')
+    return render_template('index.html', prediction_text=f'Prediksi harga rumah adalah : {prediction_milyar:.2f} milyar')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False)
